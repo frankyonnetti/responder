@@ -1,0 +1,29 @@
+/**
+ * Styles can be organized using the SMACSS technique http://smacss.com/book
+ */
+
+/**
+ * @fonts
+ * Download Google fonts to theme locally
+ * Github project: https://github.com/mmastrac/webfont-dl
+ *
+ * Go to the theme’s font directory and run:
+ * $ webfont-dl "http://fonts.googleapis.com/css?family=FONTNAME:400,700" -o ./FONTNAME.css
+ *
+ */
+
+// Or import right from Google fonts: https://www.google.com/fonts
+// @import "//fonts.googleapis.com/css?family=Questrial";
+
+// Import Sass mixins, variables, etc.
+@import "mixins";
+@import "base";
+
+// Foundation
+// https://www.npmjs.com/package/foundation.scss
+@import "../node_modules/foundation.scss/foundation.scss";
+@import "../node_modules/foundation.scss/_functions.scss";
+@import "../node_modules/foundation.scss/normalize.scss";
+
+// SMACSS theme rules
+@import "theme";

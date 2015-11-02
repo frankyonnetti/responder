@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World!</title>
+  </head>
+
+  <link href="./css/styles.css" media="all" rel="stylesheet">
+
+  <script>
+  window.$ = window.jQuery = require('./node_modules/jquery/dist/jquery.min.js');
+  require('./js/scripts.js');
+  </script>
+
+  <body>
+
+    <div id="url-submission">
+      <input class="responder-url" type="text" placeholder="Enter URL">
+      <button class="button-load">Load</button> <button class="button-clear">clear</button>
+    </div>
+
+    <div id="device-area">
+
+      <div class="device-window" style="width:332px;">
+        <p>iPhone 5 (320 x 568)</p>
+        <iframe class="frame" src="" width="332" height="568"></iframe>
+      </div>
+
+      <div class="device-window" style="width:387px;">
+        <p>iPhone 6 (375 x 627)</p>
+        <iframe class="frame" src="" width="387" height="627"></iframe>
+      </div>
+
+      <div class="device-window" style="width:426px;">
+        <p>iPhone 6 Plus (414 x 736)</p>
+        <iframe class="frame" src="" width="426" height="736"></iframe>
+      </div>
+
+      <br style="clear:both;">
+
+    </div>
+
+    <!-- <p>We are using node <script>document.write(process.versions.node)</script>,<br>
+    Chrome <script>document.write(process.versions.chrome)</script>,<br>
+    and Electron <script>document.write(process.versions.electron)</script>.</p> -->
+
+    <script src="http://localhost:23476/livereload.js"></script>
+
+  </body>
+</html>
