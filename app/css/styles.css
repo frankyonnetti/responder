@@ -2626,20 +2626,24 @@ a:focus, button:focus { outline: none; }
 
 #url-submission input[type="text"] { font-size: 2rem; width: 80%; height: auto; }
 
+#device-area { padding-bottom: 1rem; }
+
 #device-area:before, #device-area:after { content: " "; display: table; }
 
 #device-area:after { clear: both; }
 
 .device-window { float: left; margin-right: 40px; }
 
-.device-window iframe { background-color: #222; border: 1px solid #222; }
+.device-window webview { display: block; }
 
-.device-window iframe::-webkit-scrollbar { background-color: #222; width: 10px; height: 10px; }
+.device-window webview, .device-window iframe { background-color: #222; border: 1px solid #222; }
 
-.device-window iframe::-webkit-scrollbar-thumb { background-color: #555; }
+.device-window webview::-webkit-scrollbar, .device-window iframe::-webkit-scrollbar { background-color: #222; width: 10px; height: 10px; }
 
-.device-window iframe::-webkit-scrollbar-thumb:hover { background-color: #999; }
+.device-window webview::-webkit-scrollbar-thumb, .device-window iframe::-webkit-scrollbar-thumb { background-color: #555; }
 
-.device-window iframe::-webkit-scrollbar-thumb:active { background-color: #555; }
+.device-window webview::-webkit-scrollbar-thumb:hover, .device-window iframe::-webkit-scrollbar-thumb:hover { background-color: #999; }
 
-.device-window iframe::-webkit-scrollbar-corner { background-color: transparent; }
+.device-window webview::-webkit-scrollbar-thumb:active, .device-window iframe::-webkit-scrollbar-thumb:active { background-color: #555; }
+
+.device-window webview::-webkit-scrollbar-corner, .device-window iframe::-webkit-scrollbar-corner { background-color: transparent; }

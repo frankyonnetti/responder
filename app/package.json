@@ -22,16 +22,18 @@
     "url": "https://github.com/atom/electron-quick-start/issues"
   },
   "homepage": "https://github.com/atom/electron-quick-start#readme",
-  "devDependencies": {
-    "foundation.scss": "^5.5.1",
-    "grunt": "latest",
-    "grunt-contrib-jshint": "latest",
-    "grunt-contrib-watch": "latest",
-    "grunt-notify": "latest",
-    "grunt-sass": "latest",
-    "tiny-lr": "^0.2.1"
-  },
   "dependencies": {
     "jquery": "^2.1.4"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "^0.34.2",
+    "foundation.scss": "^5.5.1",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-notify": "^0.4.1",
+    "grunt-sass": "^1.1.0",
+    "matchdep": "^1.0.0",
+    "tiny-lr": "^0.2.1"
   }
 }

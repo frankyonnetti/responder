@@ -93,12 +93,18 @@ button:focus {
 
 #device-area {
   @include clearfix;
+  padding-bottom: 1rem;
 }
 
 .device-window {
   float: left;
   margin-right: 40px;
 
+  webview {
+    display: block;
+  }
+
+  webview,
   iframe {
     background-color: #222;
     border: 1px solid #222;

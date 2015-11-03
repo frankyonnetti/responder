@@ -4,7 +4,6 @@ module.exports = function(grunt) {
   'use strict';
 
   // load all grunt tasks
-  // http://joebuckle.me/live-reloading-using-grunt-js-task-runner
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
   // Project configuration

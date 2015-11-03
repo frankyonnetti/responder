@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello World!</title>
+    <title>Responder</title>
   </head>
 
   <link href="./css/styles.css" media="all" rel="stylesheet">
 
   <script>
-  window.$ = window.jQuery = require('./node_modules/jquery/dist/jquery.min.js');
-  require('./js/scripts.js');
+    window.$ = window.jQuery = require('./node_modules/jquery/dist/jquery.min.js');
+    require('./js/menus.js');
+    require('./js/scripts.js');
   </script>
 
   <body>
@@ -22,17 +23,17 @@
 
       <div class="device-window" style="width:332px;">
         <p>iPhone 5 (320 x 568)</p>
-        <iframe class="frame" src="" width="332" height="568"></iframe>
+        <webview class="frame" src="" style="width:332px; height:568px;"></webview>
       </div>
 
       <div class="device-window" style="width:387px;">
         <p>iPhone 6 (375 x 627)</p>
-        <iframe class="frame" src="" width="387" height="627"></iframe>
+        <webview class="frame" src="" style="width:387px; height:627px;"></webview>
       </div>
 
       <div class="device-window" style="width:426px;">
         <p>iPhone 6 Plus (414 x 736)</p>
-        <iframe class="frame" src="" width="426" height="736"></iframe>
+        <webview class="frame" src="" style="width:426px; height:736px;"></webview>
       </div>
 
       <br style="clear:both;">
