@@ -25,7 +25,17 @@ app.on('window-all-closed', function() {
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1250, height: 900});
+  mainWindow = new BrowserWindow({
+    width: 1450,
+    height: 950
+    // 'node-integration': 'iframe',
+    // 'web-preferences': {
+    //   'web-security': false
+    // }
+    // 'web-preferences': {
+    //   'overlay-scrollbars': true
+    // }
+  });
 
   // and load the index.html of the app.
   mainWindow.loadUrl('file://' + __dirname + '/index.html');

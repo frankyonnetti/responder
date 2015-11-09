@@ -2636,14 +2636,16 @@ a:focus, button:focus { outline: none; }
 
 .device-window webview { display: block; }
 
-.device-window webview, .device-window iframe { background-color: #222; border: 1px solid #222; }
+.device-window webview, .device-window iframe { background-color: #fff; border: 1px solid #fff; }
 
-.device-window webview::-webkit-scrollbar, .device-window iframe::-webkit-scrollbar { background-color: #222; width: 10px; height: 10px; }
+.device-window iframe::-webkit-scrollbar { background-color: #fff; width: 10px; height: 7px; }
 
-.device-window webview::-webkit-scrollbar-thumb, .device-window iframe::-webkit-scrollbar-thumb { background-color: #555; }
+.device-window iframe::-webkit-scrollbar-track-piece { background-color: #fff; border-radius: 10px; }
 
-.device-window webview::-webkit-scrollbar-thumb:hover, .device-window iframe::-webkit-scrollbar-thumb:hover { background-color: #999; }
+.device-window iframe::-webkit-scrollbar-thumb { background-color: #c2c2c2; border: 1px solid #fff; border-radius: 10px; }
 
-.device-window webview::-webkit-scrollbar-thumb:active, .device-window iframe::-webkit-scrollbar-thumb:active { background-color: #555; }
+.device-window iframe::-webkit-scrollbar-thumb:hover { background-color: #7d7d7d; }
 
-.device-window webview::-webkit-scrollbar-corner, .device-window iframe::-webkit-scrollbar-corner { background-color: transparent; }
+.device-window iframe::-webkit-scrollbar-thumb:active { background-color: #7d7d7d; }
+
+.device-window iframe::-webkit-scrollbar-corner { background-color: transparent; }

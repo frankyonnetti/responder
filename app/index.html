@@ -10,20 +10,58 @@
     window.$ = window.jQuery = require('./node_modules/jquery/dist/jquery.min.js');
     require('./js/menus.js');
     require('./js/scripts.js');
+
+    onload = function() {
+
+      // show webview loading...
+      var webview = document.getElementById('foo');
+      var indicator = document.querySelector('.indicator');
+
+      var loadstart = function() {
+        indicator.innerText = 'loading...';
+      };
+      var loadstop = function() {
+        indicator.innerText = '';
+      };
+      webview.addEventListener('did-start-loading', loadstart);
+      webview.addEventListener('did-stop-loading', loadstop);
+
+      // Get URL from clicked link in webview.
+      webview.addEventListener('dom-ready', function() {
+        var clickedAnchor = webview.getUrl();
+        document.getElementById('responder-url').value = clickedAnchor;
+        console.log(clickedAnchor);
+      });
+
+      // show inspector.
+      var a = document.getElementById('show');
+      a.onclick = showCode;
+    };
+
+    // show inspector.
+    function showCode() {
+      var webview = document.getElementById('foo');
+      webview.inspectElement(0, 0); // x, y
+    }
+
   </script>
 
   <body>
 
     <div id="url-submission">
-      <input class="responder-url" type="text" placeholder="Enter URL">
+      <input id="responder-url" type="text" placeholder="Enter URL">
       <button class="button-load">Load</button> <button class="button-clear">clear</button>
     </div>
+
+    <a id="show" href="#test">Show</a>
+
+    <div class="indicator">Hello Indicator</div>
 
     <div id="device-area">
 
       <div class="device-window" style="width:332px;">
         <p>iPhone 5 (320 x 568)</p>
-        <webview class="frame" src="" style="width:332px; height:568px;"></webview>
+        <webview id="foo" class="frame" src="" style="width:332px; height:568px;"></webview>
       </div>
 
       <div class="device-window" style="width:387px;">
