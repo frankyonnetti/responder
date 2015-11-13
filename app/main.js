@@ -27,7 +27,8 @@ app.on('ready', function() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 1450,
-    height: 950
+    height: 950,
+    'title-bar-style': 'hidden-inset'
     // 'node-integration': 'iframe',
     // 'web-preferences': {
     //   'web-security': false

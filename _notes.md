@@ -23,3 +23,18 @@
 
 
 * $ npm start
+
+
+#### mixin jQuery
+
+https://discuss.atom.io/t/solved-how-to-get-urls-href-for-the-link-when-mouse-hovers-over-it-from-the-page-rendered-in-the-webview/20280
+
+var $ = require('jquery');
+
+$('body').on('mouseenter', 'a', function() {
+  updateStatusBarURL(this.href);
+});
+
+$('body').on('mouseleave', 'a', function() {
+  clearStatusBarURL();
+});

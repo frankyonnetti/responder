@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+$(document).ready(function() {
   'use strict';
 
   var loadWebsiteWindow = function() {
@@ -16,7 +16,7 @@ $( document ).ready(function() {
   }
 
   // click load button
-  $('.button-load').click(function() {
+  $('#button-load').click(function() {
     loadWebsiteWindow();
   });
 

@@ -1,7 +1,8 @@
 
 body {
   background-color: #fff;
-  margin: 1em;
+  margin: 0;
+  overflow: hidden;
 }
 
 
@@ -72,6 +73,36 @@ button:focus {
 // }
 
 
+header {
+  @include gradient(#e6e5e5, #e0dfdf);
+  border-bottom: 1px solid #cac9ca;
+  padding: 5px 0 0 86px;
+  height: 37px;
+
+  input {
+    float: left;
+    margin: 0 10px 0 0 !important;
+  }
+
+  button {
+    border: 1px solid #ccc;
+    @include gradient(#fff, #f2f2f2);
+    float: left;
+    padding: 0;
+    width: 38px;
+
+    &.button-load {
+      border-radius: 3px 0 0 3px;
+    }
+
+    &.button-clear {
+      border-left: none;
+      border-radius: 0 3px 3px 0;
+    }
+  }
+}
+
+
 
 // -------------------------
 // ! URL field elements
@@ -80,9 +111,20 @@ button:focus {
 #url-submission {
 
   input[type="text"] {
-    font-size: 2rem;
+    font-size: 0.9rem;
+    border-radius: 3px;
+    padding: 4px;
     width: 80%;
     height: auto;
+  }
+}
+
+main {
+  overflow: scroll;
+
+  .main-container {
+    padding: 20px 0 0 20px;
+    width: 2000px;
   }
 }
 

@@ -30,8 +30,36 @@
       webview.addEventListener('dom-ready', function() {
         var clickedAnchor = webview.getUrl();
         document.getElementById('responder-url').value = clickedAnchor;
-        console.log(clickedAnchor);
+        // console.log(clickedAnchor);
+
+        // var $ = require('jquery');
+        // $("input#responder-url").focusout(function(){
+          // alert("Keyup detected!");
+        // });
+
       });
+
+      // http://stackoverflow.com/questions/16048084/jquery-detect-textbox-value-change-not-based-on-user-input
+      var $ = require('jquery');
+      var $myText = $("input#responder-url");
+
+      $myText.data("value", $myText.val());
+
+      setInterval(function() {
+        var data = $myText.data("value"),
+          val = $myText.val();
+
+        if (data !== val) {
+          $myText.data("value", val);
+
+          var responderURL = $('input#responder-url').val();
+          $('.frame').each(function() {
+            $(this).attr('src', responderURL);
+            localStorage.setItem('urlItem', responderURL);
+          });
+
+        }
+      }, 100);
 
       // show inspector.
       var a = document.getElementById('show');
@@ -48,35 +76,41 @@
 
   <body>
 
-    <div id="url-submission">
-      <input id="responder-url" type="text" placeholder="Enter URL">
-      <button class="button-load">Load</button> <button class="button-clear">clear</button>
-    </div>
+    <header>
+      <div id="url-submission">
+        <input id="responder-url" type="text" placeholder="Enter URL">
+        <button class="button-load">L</button> <button class="button-clear">C</button>
+      </div>
+    </header>
 
-    <a id="show" href="#test">Show</a>
+    <main><div class="main-container">
 
-    <div class="indicator">Hello Indicator</div>
+      <a id="show" href="#test">Show</a>
 
-    <div id="device-area">
+      <div class="indicator">Hello Indicator</div>
 
-      <div class="device-window" style="width:332px;">
-        <p>iPhone 5 (320 x 568)</p>
-        <webview id="foo" class="frame" src="" style="width:332px; height:568px;"></webview>
+      <div id="device-area">
+
+        <div class="device-window" style="width:332px;">
+          <p>iPhone 5 (320 x 568)</p>
+          <webview id="foo" class="frame" src="" style="width:332px; height:568px;"></webview>
+        </div>
+
+        <div class="device-window" style="width:387px;">
+          <p>iPhone 6 (375 x 627)</p>
+          <webview class="frame" src="" style="width:387px; height:627px;"></webview>
+        </div>
+
+        <div class="device-window" style="width:426px;">
+          <p>iPhone 6 Plus (414 x 736)</p>
+          <webview class="frame" src="" style="width:426px; height:736px;"></webview>
+        </div>
+
+        <br style="clear:both;">
+
       </div>
 
-      <div class="device-window" style="width:387px;">
-        <p>iPhone 6 (375 x 627)</p>
-        <webview class="frame" src="" style="width:387px; height:627px;"></webview>
-      </div>
-
-      <div class="device-window" style="width:426px;">
-        <p>iPhone 6 Plus (414 x 736)</p>
-        <webview class="frame" src="" style="width:426px; height:736px;"></webview>
-      </div>
-
-      <br style="clear:both;">
-
-    </div>
+    </div></main>
 
     <!-- <p>We are using node <script>document.write(process.versions.node)</script>,<br>
     Chrome <script>document.write(process.versions.chrome)</script>,<br>
