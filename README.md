@@ -3,6 +3,6 @@
 
 RWD Browser Built on Electron
 
-Messing with electron to see is I can build a multi-window preview browser.
+Messing around with [electron](http://electron.atom.io) to see if I can build a multi-viewport preview browser.
 
 ![Image of browser](resources/screen-shot-11-13-2015.png)
