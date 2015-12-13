@@ -26,12 +26,13 @@ app.on('window-all-closed', function() {
 app.on('ready', function() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1450,
-    height: 950,
+    width: 1440,
+    height: 900,
+    //transparent: true,
+    // frame: false
     'title-bar-style': 'hidden-inset'
-    // 'node-integration': 'iframe',
     // 'web-preferences': {
-    //   'web-security': false
+    //   'overlayScrollbars': true
     // }
     // 'web-preferences': {
     //   'overlay-scrollbars': true

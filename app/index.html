@@ -11,60 +11,53 @@
     require('./js/menus.js');
     require('./js/scripts.js');
 
-    onload = function() {
-
-      // show webview loading...
-      var webview = document.getElementById('foo');
-      var indicator = document.querySelector('.indicator');
-
-      var loadstart = function() {
-        indicator.innerText = 'loading...';
-      };
-      var loadstop = function() {
-        indicator.innerText = '';
-      };
-      webview.addEventListener('did-start-loading', loadstart);
-      webview.addEventListener('did-stop-loading', loadstop);
-
-      // Get URL from clicked link in webview.
-      webview.addEventListener('dom-ready', function() {
-        var clickedAnchor = webview.getUrl();
-        document.getElementById('responder-url').value = clickedAnchor;
-        // console.log(clickedAnchor);
-
-        // var $ = require('jquery');
-        // $("input#responder-url").focusout(function(){
-          // alert("Keyup detected!");
-        // });
-
-      });
-
-      // http://stackoverflow.com/questions/16048084/jquery-detect-textbox-value-change-not-based-on-user-input
-      var $ = require('jquery');
-      var $myText = $("input#responder-url");
-
-      $myText.data("value", $myText.val());
-
-      setInterval(function() {
-        var data = $myText.data("value"),
-          val = $myText.val();
-
-        if (data !== val) {
-          $myText.data("value", val);
-
-          var responderURL = $('input#responder-url').val();
-          $('.frame').each(function() {
-            $(this).attr('src', responderURL);
-            localStorage.setItem('urlItem', responderURL);
-          });
-
-        }
-      }, 100);
-
-      // show inspector.
-      var a = document.getElementById('show');
-      a.onclick = showCode;
-    };
+    // onload = function() {
+    //
+    //   // show webview loading...
+    //   var webview = document.getElementById('foo');
+    //   var indicator = document.querySelector('.indicator');
+    //
+    //   var loadstart = function() {
+    //     indicator.innerHTML = '<img src="img/loader.gif" width="16" height="16">';
+    //   };
+    //   var loadstop = function() {
+    //     indicator.innerHTML = '';
+    //   };
+    //   webview.addEventListener('did-start-loading', loadstart);
+    //   webview.addEventListener('did-stop-loading', loadstop);
+    //
+    //   // Get URL from clicked link in webview.
+    //   webview.addEventListener('dom-ready', function() {
+    //     var clickedAnchor = webview.getUrl();
+    //     document.getElementById('responder-url').value = clickedAnchor;
+    //   });
+    //
+    //   // http://stackoverflow.com/questions/16048084/jquery-detect-textbox-value-change-not-based-on-user-input
+    //   // var $ = require('jquery');
+    //   // var $myText = $("input#responder-url");
+    //
+    //   // $myText.data("value", $myText.val());
+    //
+    //   // setInterval(function() {
+    //   //   var data = $myText.data("value"),
+    //   //       val = $myText.val();
+    //
+    //   //   if (data !== val) {
+    //   //     $myText.data("value", val);
+    //
+    //   //     var responderURL = $('input#responder-url').val();
+    //   //     $('.frame').each(function() {
+    //   //       $(this).attr('src', responderURL);
+    //   //       localStorage.setItem('urlItem', responderURL);
+    //   //     });
+    //
+    //   //   }
+    //   // }, 100);
+    //
+    //   // show inspector.
+    //   var a = document.getElementById('show');
+    //   a.onclick = showCode;
+    // };
 
     // show inspector.
     function showCode() {
@@ -77,32 +70,56 @@
   <body>
 
     <header>
+      <!-- Traffic lights
+      <ul>
+        <li><a id="windowControlClose" href="#"></a></li>
+        <li><a id="windowControlMinimize" href="#"></a></li>
+        <li><span id="windowControlMaximize"></span></li>
+      </ul> -->
       <div id="url-submission">
         <input id="responder-url" type="text" placeholder="Enter URL">
-        <button class="button-load">L</button> <button class="button-clear">C</button>
+        <button class="button-load"><i class="fa fa-refresh"></i></button> <!-- <button class="button-clear">C</button> -->
+        <div id="add-webview"><i class="fa fa-plus-circle"></i></div>
       </div>
     </header>
 
     <main><div class="main-container">
 
-      <a id="show" href="#test">Show</a>
-
-      <div class="indicator">Hello Indicator</div>
-
       <div id="device-area">
 
         <div class="device-window" style="width:332px;">
-          <p>iPhone 5 (320 x 568)</p>
+          <div class="webview-info">
+            iPhone 5
+            <span class="indicator"></span>
+            <span class="actions">
+              <a id="show" class="web-inspector" href="#test">Web Inspector</a>
+              <a class="close-webview" href="#"> 320 x 568</a>
+            </span>
+          </div>
           <webview id="foo" class="frame" src="" style="width:332px; height:568px;"></webview>
         </div>
 
         <div class="device-window" style="width:387px;">
-          <p>iPhone 6 (375 x 627)</p>
+          <div class="webview-info">
+            iPhone 6
+            <span class="indicator"></span>
+            <span class="actions">
+              <a id="show" class="web-inspector" href="#test">Web Inspector</a>
+              <a class="close-webview" href="#"> 375 x 627</a>
+            </span>
+          </div>
           <webview class="frame" src="" style="width:387px; height:627px;"></webview>
         </div>
 
         <div class="device-window" style="width:426px;">
-          <p>iPhone 6 Plus (414 x 736)</p>
+          <div class="webview-info">
+            iPhone 6 Plus
+            <span class="indicator"></span>
+            <span class="actions">
+              <a id="show" class="web-inspector" href="#test">Web Inspector</a>
+              <a class="close-webview" href="#"> 414 x 736</a>
+            </span>
+          </div>
           <webview class="frame" src="" style="width:426px; height:736px;"></webview>
         </div>
 

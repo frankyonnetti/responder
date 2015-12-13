@@ -1,6 +1,6 @@
 
 body {
-  background-color: #fff;
+  background-color: #ebebeb;
   margin: 0;
   overflow: hidden;
 }
@@ -28,71 +28,44 @@ button:focus {
 
 
 // -------------------------
-// ! Typography
+// ! Header
 // -------------------------
 
-// h1 {
-//   color: $blue;
-//   font-size: ;
-//   line-height: ;
-//   font-family: ;
-//   padding-bottom: 1.2rem;
-// }
-
-// h2 {
-//   color: $green_dark;
-//   font-size: ;
-//   line-height: ;
-//   font-family: ;
-//   padding-bottom: 1.2rem;
-// }
-
-// h3 {
-//   color: $green;
-//   font-size: ;
-//   line-height: ;
-//   font-family: ;
-// }
-
-// h4 {
-//   color: $indigo;
-//   font-weight: 600;
-//   font-size: ;
-//   line-height: ;
-//   font-family: ;
-// }
-
-// p, ul, ol, dd {
-//   color: #333;
-//   font-size: ;
-//   line-height: ;
-// }
-
-// li {
-//   padding-bottom: ;
-// }
-
-
 header {
-  @include gradient(#e6e5e5, #e0dfdf);
+  // @include gradient(#e6e5e5, #e0dfdf);
+  background-color: #eee;
   border-bottom: 1px solid #cac9ca;
-  padding: 5px 0 0 86px;
-  height: 37px;
+  padding: 7px 0 0 86px;
+  height: 38px;
+  -webkit-app-region: drag;
+
 
   input {
+    @include gradient(#fff, #f2f2f2);
     float: left;
     margin: 0 10px 0 0 !important;
+    -webkit-app-region: no-drag;
   }
 
   button {
+    color: #737373;
+    font-size: 0.85rem;
+    line-height: 23px;
     border: 1px solid #ccc;
     @include gradient(#fff, #f2f2f2);
     float: left;
     padding: 0;
-    width: 38px;
+    width: 40px;
+    -webkit-app-region: no-drag;
+
+    &:active,
+    &:focus,
+    &:hover {
+      color: #333;
+    }
 
     &.button-load {
-      border-radius: 3px 0 0 3px;
+      border-radius: 3px;
     }
 
     &.button-clear {
@@ -100,8 +73,86 @@ header {
       border-radius: 0 3px 3px 0;
     }
   }
+
+  #add-webview {
+    color: #737373;
+    font-size: 1.0rem;
+    line-height: 23px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    @include gradient(#fff, #f2f2f2);
+    float: right;
+    margin-right: 15px;
+    width: 40px;
+  }
 }
 
+// Window Controls
+header > ul {
+  float: left;
+  line-height: 0;
+  padding-top: 12px;
+  padding-left: 8px;
+  cursor: default;
+
+  & > li,
+  & > li > a,
+  & > li > span {
+    display: inline-block;
+  }
+
+  & > li > a,
+  & > li > span {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    width: 14px;
+    height: 14px;
+    margin: 5px 0 0;
+    cursor: default;
+    -webkit-app-region: no-drag;
+
+    &:hover,
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+header ul {
+
+  a#windowControlClose {
+    background-image: url(../img/gui/traffic-close.png);
+    @include image-2x("../img/gui/traffic-close@2x.png", 14px, 42px);
+  }
+
+  a#windowControlMinimize {
+    background-image: url(../img/gui/traffic-minimise.png);
+    @include image-2x("../img/gui/traffic-minimise@2x.png", 14px, 42px);
+  }
+
+  span#windowControlMaximize {
+    background-image: url(../img/gui/traffic-disabled.png);
+    @include image-2x("../img/gui/traffic-disabled@2x.png", 14px, 14px);
+  }
+
+  &:hover {
+
+    a#windowControlClose,
+    a#windowControlMinimize {
+      background-position: 0 -14px;
+    }
+
+    a#windowControlClose:active {
+      background-position: 0 -28px;
+    }
+
+    a#windowControlMinimize:active {
+      background-position: 0 -28px;
+    }
+  }
+}
 
 
 // -------------------------
@@ -111,45 +162,84 @@ header {
 #url-submission {
 
   input[type="text"] {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    line-height: 21px;
     border-radius: 3px;
-    padding: 4px;
+    box-shadow: none;
+    padding: 2px 5px 0;
     width: 80%;
     height: auto;
   }
 }
 
+
+// -------------------------
+// ! main
+// -------------------------
+
 main {
-  overflow: scroll;
+  overflow: auto;
 
   .main-container {
-    padding: 20px 0 0 20px;
-    width: 2000px;
   }
 }
 
 
 // -------------------------
-// ! iframes
+// ! webview
 // -------------------------
 
 #device-area {
+  background: transparent url(../img/webview-info-bg.svg) repeat-x left top;
+  padding-bottom: 40px;
+  padding-left: 20px;
   @include clearfix;
-  padding-bottom: 1rem;
 }
 
 .device-window {
   float: left;
   margin-right: 40px;
 
-  webview {
-    display: block;
+  .webview-info {
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-top: 8px;
+    height: 38px;
+
+    span.actions {
+      float: right;
+    }
+
+    a {
+      color: #878787;
+      font-size: 12px;
+      line-height: 17px;
+      font-weight: normal;
+      display: inline-block;
+      margin-left: 20px;
+    }
+
+    a.web-inspector {
+      background: transparent url(../img/icon-webinspect.svg) no-repeat left center;
+      padding-left: 30px;
+      height: 17px;
+    }
+
+    a.close-webview {
+      background: transparent url(../img/icon-close.svg) no-repeat 15px center;
+      border-left: 1px solid #d9d9d9;
+      margin-left: 15px;
+      padding-left: 40px;
+    }
   }
 
-  webview,
-  iframe {
+  webview {
     background-color: #fff;
-    border: 1px solid #fff;
+    // border: 1px solid #fff;
+    display: block;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   }
 
   iframe {
@@ -183,4 +273,3 @@ main {
     &::-webkit-resizer {}
   }
 }
-
