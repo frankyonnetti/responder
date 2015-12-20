@@ -1,5 +1,5 @@
-+Responder
-==========
+Responder
+=========
 
 RWD Browser Built on Electron
 

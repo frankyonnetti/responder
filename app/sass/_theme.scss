@@ -89,70 +89,70 @@ header {
 }
 
 // Window Controls
-header > ul {
-  float: left;
-  line-height: 0;
-  padding-top: 12px;
-  padding-left: 8px;
-  cursor: default;
-
-  & > li,
-  & > li > a,
-  & > li > span {
-    display: inline-block;
-  }
-
-  & > li > a,
-  & > li > span {
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    width: 14px;
-    height: 14px;
-    margin: 5px 0 0;
-    cursor: default;
-    -webkit-app-region: no-drag;
-
-    &:hover,
-    &:focus {
-      outline: none;
-    }
-  }
-}
-
-header ul {
-
-  a#windowControlClose {
-    background-image: url(../img/gui/traffic-close.png);
-    @include image-2x("../img/gui/traffic-close@2x.png", 14px, 42px);
-  }
-
-  a#windowControlMinimize {
-    background-image: url(../img/gui/traffic-minimise.png);
-    @include image-2x("../img/gui/traffic-minimise@2x.png", 14px, 42px);
-  }
-
-  span#windowControlMaximize {
-    background-image: url(../img/gui/traffic-disabled.png);
-    @include image-2x("../img/gui/traffic-disabled@2x.png", 14px, 14px);
-  }
-
-  &:hover {
-
-    a#windowControlClose,
-    a#windowControlMinimize {
-      background-position: 0 -14px;
-    }
-
-    a#windowControlClose:active {
-      background-position: 0 -28px;
-    }
-
-    a#windowControlMinimize:active {
-      background-position: 0 -28px;
-    }
-  }
-}
+// header > ul {
+//   float: left;
+//   line-height: 0;
+//   padding-top: 12px;
+//   padding-left: 8px;
+//   cursor: default;
+//
+//   & > li,
+//   & > li > a,
+//   & > li > span {
+//     display: inline-block;
+//   }
+//
+//   & > li > a,
+//   & > li > span {
+//     background-color: transparent;
+//     background-repeat: no-repeat;
+//     background-position: 0 0;
+//     width: 14px;
+//     height: 14px;
+//     margin: 5px 0 0;
+//     cursor: default;
+//     -webkit-app-region: no-drag;
+//
+//     &:hover,
+//     &:focus {
+//       outline: none;
+//     }
+//   }
+// }
+//
+// header ul {
+//
+//   a#windowControlClose {
+//     background-image: url(../img/gui/traffic-close.png);
+//     @include image-2x("../img/gui/traffic-close@2x.png", 14px, 42px);
+//   }
+//
+//   a#windowControlMinimize {
+//     background-image: url(../img/gui/traffic-minimise.png);
+//     @include image-2x("../img/gui/traffic-minimise@2x.png", 14px, 42px);
+//   }
+//
+//   span#windowControlMaximize {
+//     background-image: url(../img/gui/traffic-disabled.png);
+//     @include image-2x("../img/gui/traffic-disabled@2x.png", 14px, 14px);
+//   }
+//
+//   &:hover {
+//
+//     a#windowControlClose,
+//     a#windowControlMinimize {
+//       background-position: 0 -14px;
+//     }
+//
+//     a#windowControlClose:active {
+//       background-position: 0 -28px;
+//     }
+//
+//     a#windowControlMinimize:active {
+//       background-position: 0 -28px;
+//     }
+//   }
+// }
 
 
 // -------------------------

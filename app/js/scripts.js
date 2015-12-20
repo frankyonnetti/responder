@@ -66,6 +66,67 @@ $(document).ready(function() {
 
     var responderURL = $('input#responder-url').val();
 
+
+
+
+
+
+
+    var responderURL_1 = localStorage.getItem('urlItem_1');
+    var responderURL_2 = localStorage.getItem('urlItem_2');
+    var responderURL_3 = localStorage.getItem('urlItem_3');
+
+    if (responderURL !== null && responderURL_1 !== responderURL) {
+      localStorage.setItem('urlItem_1', responderURL);
+      console.log(localStorage.getItem('urlItem_1'));
+    }
+
+    if (responderURL_1 !== null && responderURL_1 !== responderURL) {
+      localStorage.setItem('urlItem_2', responderURL_1);
+      console.log(localStorage.getItem('urlItem_2'));
+    }
+
+    if (responderURL_2 !== null && responderURL_1 !== responderURL) {
+      localStorage.setItem('urlItem_3', responderURL_2);
+      console.log(localStorage.getItem('urlItem_3'));
+    }
+
+
+    // // 3
+    // if (responderURL_3 !== responderURL_2 ||
+    //     responderURL_3 !== responderURL_1)
+    // {
+    //   responderURL_3 = responderURL_2;
+    //   localStorage.setItem('urlItem_3', responderURL_3);
+    //   console.log('URL 3: ' + responderURL_3);
+    // }
+
+    // // 2
+    // if (responderURL_2 !== responderURL_1) {
+    //   responderURL_2 = responderURL_1;
+    //   localStorage.setItem('urlItem_2', responderURL_2);
+    //   console.log('URL 2: ' + responderURL_2);
+    // }
+
+    // // 1
+    // if (responderURL !== responderURL_1) {
+    //   responderURL_1 = responderURL;
+    //   localStorage.setItem('urlItem_1', responderURL_1);
+    //   console.log('URL 1: ' + responderURL_1);
+    // }
+
+
+
+
+
+
+    // var existingURLs = {'urls':responderURL};
+    // localStorage.setItem('urlItemList', JSON.stringify(existingURLs));
+    // var retrievedObject = localStorage.getItem('urlItemList');
+    // console.log('retrievedObject: ', JSON.parse(retrievedObject));
+
+
+
     $('.frame').each(function() {
       if (responderURL.length !== 0) {
         $(this).attr('src', responderURL);
@@ -86,7 +147,7 @@ $(document).ready(function() {
   }
 
   $('input#responder-url').on('click', function () {
-    $(this).select();
+    // $(this).select();
   });
 
   // click re-load button
