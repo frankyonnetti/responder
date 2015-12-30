@@ -35,143 +35,126 @@ $(document).ready(function() {
       sumDeviceWidth += Number($(this).outerWidth(true));
     });
 
-  $('main').css({'height': (viewport_height - 38) + 'px'});
+  $('main').css({'height': viewport_height + 'px'});
   $('main .main-container').css({'min-width': (sumDeviceWidth + 40) + 'px'});
-
+  $('header').css({'min-height': viewport_height + 'px'});
   };
   mainHeight();
+
+
   $(window).resize(response_change.waitForIdle(function() {
     mainHeight();
-  }, 100));
+  }, 200));
 
-
-  //
-  // var gui = require('nw.gui');
-  // var win = gui.Window.get();
-  //
-  // // Min
-  // document.getElementById('windowControlMinimize').onclick = function() {
-  //   win.minimize();
-  // };
-  //
-  // // Close
-  // document.getElementById('windowControlClose').onclick = function() {
-  //   win.close();
-  // };
 
 
   // --------------------------------------------------------------------
 
+  var responderURLfield = 'input#responder-url';
+
   var loadWebsiteWindow = function() {
 
-    var responderURL = $('input#responder-url').val();
-
-
-
-
-
-
+    var responderURL = $(responderURLfield).val();
 
     var responderURL_1 = localStorage.getItem('urlItem_1');
     var responderURL_2 = localStorage.getItem('urlItem_2');
     var responderURL_3 = localStorage.getItem('urlItem_3');
 
+
     if (responderURL !== null && responderURL_1 !== responderURL) {
-      localStorage.setItem('urlItem_1', responderURL);
-      console.log(localStorage.getItem('urlItem_1'));
+      if (responderURL.indexOf('http') === 0) {
+        localStorage.setItem('urlItem_1', responderURL);
+      }
     }
-
     if (responderURL_1 !== null && responderURL_1 !== responderURL) {
-      localStorage.setItem('urlItem_2', responderURL_1);
-      console.log(localStorage.getItem('urlItem_2'));
+      if (responderURL_1.indexOf('http') === 0) {
+        localStorage.setItem('urlItem_2', responderURL_1);
+      }
     }
-
     if (responderURL_2 !== null && responderURL_1 !== responderURL) {
-      localStorage.setItem('urlItem_3', responderURL_2);
-      console.log(localStorage.getItem('urlItem_3'));
+      if (responderURL_2.indexOf('http') === 0) {
+        localStorage.setItem('urlItem_3', responderURL_2);
+      }
     }
 
+    $('header ul ul#url-submission li').remove();
 
-    // // 3
-    // if (responderURL_3 !== responderURL_2 ||
-    //     responderURL_3 !== responderURL_1)
-    // {
-    //   responderURL_3 = responderURL_2;
-    //   localStorage.setItem('urlItem_3', responderURL_3);
-    //   console.log('URL 3: ' + responderURL_3);
-    // }
+    if (responderURL_1 !== null) {
+      $('header ul ul#url-submission').append('<li>' + responderURL_1 + '</li>');
+    }
+    if (responderURL_2 !== null) {
+      $('header ul ul#url-submission').append('<li>' + responderURL_2 + '</li>');
+    }
+    if (responderURL_3 !== null) {
+      $('header ul ul#url-submission').append('<li>' + responderURL_3 + '</li>');
+    }
 
-    // // 2
-    // if (responderURL_2 !== responderURL_1) {
-    //   responderURL_2 = responderURL_1;
-    //   localStorage.setItem('urlItem_2', responderURL_2);
-    //   console.log('URL 2: ' + responderURL_2);
-    // }
-
-    // // 1
-    // if (responderURL !== responderURL_1) {
-    //   responderURL_1 = responderURL;
-    //   localStorage.setItem('urlItem_1', responderURL_1);
-    //   console.log('URL 1: ' + responderURL_1);
-    // }
-
-
-
-
-
-
-    // var existingURLs = {'urls':responderURL};
-    // localStorage.setItem('urlItemList', JSON.stringify(existingURLs));
-    // var retrievedObject = localStorage.getItem('urlItemList');
-    // console.log('retrievedObject: ', JSON.parse(retrievedObject));
-
-
-
+    // Check if URL field has content, and if so,
+    // use it for each webview.
     $('.frame').each(function() {
-      if (responderURL.length !== 0) {
+      if (responderURL.indexOf('http') === 0) {
         $(this).attr('src', responderURL);
-        localStorage.setItem('urlItem', responderURL);
-      } else {
-        $(this).attr('src', 'empty.html');
         localStorage.setItem('urlItem', responderURL);
       }
     });
+
   };
 
+  // click from list
+  $('header ul ul#url-submission').on('click', 'li', function() {
+    var responderURLval = $(this).html();
+    $('.frame').each(function() {
+      $(this).attr('src', responderURLval);
+    });
+  });
+
+
+
   // load
-  if (localStorage.getItem('urlItem').length !== 0) {
-    $('input#responder-url').val(localStorage.getItem('urlItem'));
+  if (localStorage.getItem('urlItem') !== null &&
+      localStorage.getItem('urlItem').indexOf('http') === 0) {
+    $(responderURLfield).val(localStorage.getItem('urlItem'));
     loadWebsiteWindow();
   } else {
-    loadWebsiteWindow();
+    $(responderURLfield).css('text-indent', '-1000000px');
+    $('.frame').each(function() {
+      $(this).attr('src', 'empty.html');
+    });
+    setTimeout(function() {
+      $(responderURLfield).val('').css('text-indent', '0');
+    }, 300);
   }
 
-  $('input#responder-url').on('click', function () {
-    // $(this).select();
-  });
+  // $(responderURLfield).on('click', function() {
+  //   $(this).select();
+  // });
 
   // click re-load button
-  $('#button-load').on('click', function () {
-    $('input#responder-url').val(localStorage.getItem('urlItem'));
-    // $('input#responder-url').blur();
-    loadWebsiteWindow();
-  });
+  // $('#button-load').on('click', function() {
+  //   $(responderURLfield).val(localStorage.getItem('urlItem'));
+  //   // $(responderURLfield).blur();
+  //   loadWebsiteWindow();
+  // });
 
   // hit enter key
   $(document).keyup(function(e) {
     if (e.keyCode === 13) {
-      $('input#responder-url').blur();
+      $(responderURLfield).blur();
       loadWebsiteWindow();
     }
   });
 
-  $('.button-clear').click(function() {
-    $('input#responder-url').val('');
-    $('.frame').each(function() {
-      $(this).attr('src', 'empty.html');
-    });
-    localStorage.setItem('urlItem', 'empty.html');
-  });
+  // $('.button-clear').click(function() {
+  //   $(responderURLfield).val('');
+  //   $('.frame').each(function() {
+  //     $(this).attr('src', 'empty.html');
+  //   });
+  //   localStorage.setItem('urlItem', 'empty.html');
+  // });
+
+
+
+
 
 
   $('webview a').click(function() {
@@ -180,5 +163,14 @@ $(document).ready(function() {
     // $('iframe').attr('src', link);
     // return false;
   });
+
+
+  //
+  // ----------------------------------
+
+  $('header ul li.urls i.fa').click(function() {
+    $('header ul ul#url-submission').addClass('open');
+  });
+
 
 });

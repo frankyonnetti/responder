@@ -2622,11 +2622,29 @@ a:hover, a:visited:hover { color: #4caf50; text-decoration: underline; }
 
 a:focus, button:focus { outline: none; }
 
-header { background-color: #eee; border-bottom: 1px solid #cac9ca; padding: 7px 0 0 86px; height: 38px; -webkit-app-region: drag; }
+header { background-color: #fff; box-shadow: 1px 0 0 rgba(0, 0, 0, 0.1); float: left; padding: 77px 0 0 0; width: 77px; -webkit-app-region: drag; position: absolute; top: 0; left: 0; z-index: 100; }
 
-header input { background-color: #fff; background-image: -moz-linear-gradient(top, #fff, #f2f2f2); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#f2f2f2)); background-image: -webkit-linear-gradient(top, #fff, #f2f2f2); background-image: -o-linear-gradient(top, #fff, #f2f2f2); background-image: linear-gradient(to bottom, #fff, #f2f2f2); background-repeat: repeat-x; float: left; margin: 0 10px 0 0 !important; -webkit-app-region: no-drag; }
+header ul { list-style: none; margin: 0; padding: 0; }
 
-header button { color: #737373; font-size: 0.85rem; line-height: 23px; border: 1px solid #ccc; background-color: #fff; background-image: -moz-linear-gradient(top, #fff, #f2f2f2); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#f2f2f2)); background-image: -webkit-linear-gradient(top, #fff, #f2f2f2); background-image: -o-linear-gradient(top, #fff, #f2f2f2); background-image: linear-gradient(to bottom, #fff, #f2f2f2); background-repeat: repeat-x; float: left; padding: 0; width: 40px; -webkit-app-region: no-drag; }
+header ul li { position: relative; z-index: 1; }
+
+header ul li i.fa { color: #5a5a5a; font-size: 32px; text-align: center; border: 1px solid #fff; border-right: none; border-radius: 2px 0 0 2px; display: block; margin: 0 0 20px 10px; padding: 10px 10px 10px 0; width: 67px; }
+
+header ul li i.fa:hover { border-color: #ebebeb; }
+
+header ul ul { background-color: #fff; box-shadow: 10px 0 18px rgba(0, 0, 0, 0.3); border-radius: 0 5px 5px 0; margin: 0; padding: 10px 10px 0 6px; width: 300px; position: absolute; top: 3px; left: 77px; z-index: 1; }
+
+header ul ul li { font-size: 14px; margin: 0 0 4px; padding: 2px 6px; }
+
+header ul ul li:hover { cursor: pointer; background-color: #eee; }
+
+header ul ul li:last-child { margin-bottom: 10px; }
+
+header #url-submission input[type="text"] { font-size: 0.85rem; line-height: 21px; border-radius: 3px; box-shadow: none; margin: 0 0 10px; padding: 2px 5px 0; width: 100%; height: auto; }
+
+header input { background-color: #fff; background-image: -moz-linear-gradient(top, #fff, #f2f2f2); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#f2f2f2)); background-image: -webkit-linear-gradient(top, #fff, #f2f2f2); background-image: -o-linear-gradient(top, #fff, #f2f2f2); background-image: linear-gradient(to bottom, #fff, #f2f2f2); background-repeat: repeat-x; -webkit-app-region: no-drag; }
+
+header button { color: #737373; font-size: 0.85rem; line-height: 23px; border: 1px solid #ccc; background-color: #fff; background-image: -moz-linear-gradient(top, #fff, #f2f2f2); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#f2f2f2)); background-image: -webkit-linear-gradient(top, #fff, #f2f2f2); background-image: -o-linear-gradient(top, #fff, #f2f2f2); background-image: linear-gradient(to bottom, #fff, #f2f2f2); background-repeat: repeat-x; padding: 0; width: 40px; -webkit-app-region: no-drag; }
 
 header button:active, header button:focus, header button:hover { color: #333; }
 
@@ -2636,9 +2654,7 @@ header button.button-clear { border-left: none; border-radius: 0 3px 3px 0; }
 
 header #add-webview { color: #737373; font-size: 1.0rem; line-height: 23px; text-align: center; border: 1px solid #ccc; border-radius: 3px; background-color: #fff; background-image: -moz-linear-gradient(top, #fff, #f2f2f2); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#f2f2f2)); background-image: -webkit-linear-gradient(top, #fff, #f2f2f2); background-image: -o-linear-gradient(top, #fff, #f2f2f2); background-image: linear-gradient(to bottom, #fff, #f2f2f2); background-repeat: repeat-x; float: right; margin-right: 15px; width: 40px; }
 
-#url-submission input[type="text"] { font-size: 0.85rem; line-height: 21px; border-radius: 3px; box-shadow: none; padding: 2px 5px 0; width: 80%; height: auto; }
-
-main { overflow: auto; }
+main { margin-left: 77px; overflow: auto; }
 
 #device-area { background: transparent url(../img/webview-info-bg.svg) repeat-x left top; padding-bottom: 40px; padding-left: 20px; }
 
@@ -2648,7 +2664,7 @@ main { overflow: auto; }
 
 .device-window { float: left; margin-right: 40px; }
 
-.device-window .webview-info { font-size: 12px; line-height: 17px; font-weight: bold; margin-bottom: 20px; padding-top: 8px; height: 38px; }
+.device-window .webview-info { font-size: 12px; line-height: 17px; font-weight: bold; margin-bottom: 20px; padding-top: 10px; height: 38px; }
 
 .device-window .webview-info span.actions { float: right; }
 

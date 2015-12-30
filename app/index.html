@@ -70,21 +70,20 @@
   <body>
 
     <header>
-      <!-- Traffic lights
       <ul>
-        <li><a id="windowControlClose" href="#"></a></li>
-        <li><a id="windowControlMinimize" href="#"></a></li>
-        <li><span id="windowControlMaximize"></span></li>
-      </ul> -->
-      <div id="url-submission">
-        <input id="responder-url" type="text" placeholder="Enter URL">
-        <button class="button-load"><i class="fa fa-refresh"></i></button> <!-- <button class="button-clear">C</button> -->
-        <div id="add-webview"><i class="fa fa-plus-circle"></i></div>
-      </div>
+        <li class="urls"><i class="fa fa-globe"></i>
+          <ul id="url-submission">
+            <lh><input id="responder-url" type="text" placeholder="Enter URL"></lh>
+          </ul>
+        </li>
+        <li><i class="fa fa-plus-circle"></i></li>
+      </ul>
+
+      <!-- <button class="button-load"><i class="fa fa-refresh"></i></button>  -->
+      <!-- <button class="button-clear">C</button> -->
     </header>
 
     <main><div class="main-container">
-
       <div id="device-area">
 
         <div class="device-window" style="width:332px;">
@@ -126,7 +125,6 @@
         <br style="clear:both;">
 
       </div>
-
     </div></main>
 
     <!-- <p>We are using node <script>document.write(process.versions.node)</script>,<br>

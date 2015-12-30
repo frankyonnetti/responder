@@ -1,20 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="200" height="38" viewBox="0 0 200 38">
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="38" viewBox="0 0 200 38">
   <defs>
     <style>
       .cls-1 {
-        fill: #fff;
-      }
-
-      .cls-2 {
         fill: #dad9da;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-width: 20px;
       }
     </style>
   </defs>
-  <g id="artboard-1">
-    <rect width="200" height="37" class="cls-1"/>
-    <rect y="37" width="200" height="1" class="cls-2"/>
+  <g id="webview-info-bg">
+    <rect class="cls-1" y="37" width="200" height="1"/>
   </g>
 </svg>

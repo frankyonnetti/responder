@@ -32,18 +32,99 @@ button:focus {
 // -------------------------
 
 header {
-  // @include gradient(#e6e5e5, #e0dfdf);
-  background-color: #eee;
-  border-bottom: 1px solid #cac9ca;
-  padding: 7px 0 0 86px;
-  height: 38px;
+  background-color: #fff;
+  // border-right: 1px solid #e0e0e0;
+  box-shadow: 1px 0 0 rgba(0, 0, 0, 0.1);
+  float: left;
+  padding: 77px 0 0 0;
+  width: 77px;
+  // height: 38px;
   -webkit-app-region: drag;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
 
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      position: relative;
+      z-index: 1;
+
+      i.fa {
+        color: #5a5a5a;
+        font-size: 32px;
+        text-align: center;
+        border: 1px solid #fff;
+        border-right: none;
+        border-radius: 2px 0 0 2px;
+        display: block;
+        margin: 0 0 20px 10px;
+        padding: 10px 10px 10px 0;
+        width: 67px;
+
+        &:hover {
+          border-color: #ebebeb;
+        }
+      }
+    }
+
+    ul {
+      background-color: #fff;
+      box-shadow: 10px 0 18px rgba(0, 0, 0, 0.3);
+      border-radius: 0 5px 5px 0;
+      margin: 0;
+      padding: 10px 10px 0 6px;
+      width: 300px;
+      position: absolute;
+      top: 3px;
+      left: 77px;
+      z-index: 1;
+
+      li {
+        font-size: 14px;
+        margin: 0 0 4px;
+        padding: 2px 6px;
+
+        &:hover {
+          cursor: pointer;
+          background-color: #eee;
+        }
+
+        &:last-child {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+
+// ! URL field elements
+// -------------------------
+
+header #url-submission {
+
+  input[type="text"] {
+    font-size: 0.85rem;
+    line-height: 21px;
+    border-radius: 3px;
+    box-shadow: none;
+    margin: 0 0 10px;
+    padding: 2px 5px 0;
+    width: 100%;
+    height: auto;
+  }
+}
+
+header {
 
   input {
     @include gradient(#fff, #f2f2f2);
-    float: left;
-    margin: 0 10px 0 0 !important;
+    // float: left;
+    // margin: 0 10px 0 0 !important;
     -webkit-app-region: no-drag;
   }
 
@@ -53,7 +134,7 @@ header {
     line-height: 23px;
     border: 1px solid #ccc;
     @include gradient(#fff, #f2f2f2);
-    float: left;
+    // float: left;
     padding: 0;
     width: 40px;
     -webkit-app-region: no-drag;
@@ -88,96 +169,13 @@ header {
   }
 }
 
-// Window Controls
-// header > ul {
-//   float: left;
-//   line-height: 0;
-//   padding-top: 12px;
-//   padding-left: 8px;
-//   cursor: default;
-//
-//   & > li,
-//   & > li > a,
-//   & > li > span {
-//     display: inline-block;
-//   }
-//
-//   & > li > a,
-//   & > li > span {
-//     background-color: transparent;
-//     background-repeat: no-repeat;
-//     background-position: 0 0;
-//     width: 14px;
-//     height: 14px;
-//     margin: 5px 0 0;
-//     cursor: default;
-//     -webkit-app-region: no-drag;
-//
-//     &:hover,
-//     &:focus {
-//       outline: none;
-//     }
-//   }
-// }
-//
-// header ul {
-//
-//   a#windowControlClose {
-//     background-image: url(../img/gui/traffic-close.png);
-//     @include image-2x("../img/gui/traffic-close@2x.png", 14px, 42px);
-//   }
-//
-//   a#windowControlMinimize {
-//     background-image: url(../img/gui/traffic-minimise.png);
-//     @include image-2x("../img/gui/traffic-minimise@2x.png", 14px, 42px);
-//   }
-//
-//   span#windowControlMaximize {
-//     background-image: url(../img/gui/traffic-disabled.png);
-//     @include image-2x("../img/gui/traffic-disabled@2x.png", 14px, 14px);
-//   }
-//
-//   &:hover {
-//
-//     a#windowControlClose,
-//     a#windowControlMinimize {
-//       background-position: 0 -14px;
-//     }
-//
-//     a#windowControlClose:active {
-//       background-position: 0 -28px;
-//     }
-//
-//     a#windowControlMinimize:active {
-//       background-position: 0 -28px;
-//     }
-//   }
-// }
-
-
-// -------------------------
-// ! URL field elements
-// -------------------------
-
-#url-submission {
-
-  input[type="text"] {
-    font-size: 0.85rem;
-    line-height: 21px;
-    border-radius: 3px;
-    box-shadow: none;
-    padding: 2px 5px 0;
-    width: 80%;
-    height: auto;
-  }
-}
-
 
 // -------------------------
 // ! main
 // -------------------------
 
 main {
+  margin-left: 77px;
   overflow: auto;
 
   .main-container {
@@ -205,7 +203,7 @@ main {
     line-height: 17px;
     font-weight: bold;
     margin-bottom: 20px;
-    padding-top: 8px;
+    padding-top: 10px;
     height: 38px;
 
     span.actions {
