@@ -1,6 +1,6 @@
 
 body {
-  background-color: #ebebeb;
+  background-color: #f5f5f5;
   margin: 0;
   overflow: hidden;
 }
@@ -32,18 +32,24 @@ button:focus {
 // -------------------------
 
 header {
-  background-color: #fff;
+  background-color: $black_4;
   // border-right: 1px solid #e0e0e0;
   box-shadow: 1px 0 0 rgba(0, 0, 0, 0.1);
   float: left;
-  padding: 77px 0 0 0;
+  padding: 0;
   width: 77px;
-  // height: 38px;
+  @include transition(width 0.3s cubic-bezier(.82, .1, .14, 1.12));
   -webkit-app-region: drag;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 100;
+
+  .header-wrap {
+    background-color: $black_3;
+    padding: 77px 0 0 0;
+    width: 77px;
+  }
 
   ul {
     list-style: none;
@@ -51,15 +57,13 @@ header {
     padding: 0;
 
     li {
-      position: relative;
-      z-index: 1;
+      // position: relative;
+      // z-index: 1;
 
       i.fa {
         color: #5a5a5a;
         font-size: 32px;
         text-align: center;
-        border: 1px solid #fff;
-        border-right: none;
         border-radius: 2px 0 0 2px;
         display: block;
         margin: 0 0 20px 10px;
@@ -67,37 +71,109 @@ header {
         width: 67px;
 
         &:hover {
-          border-color: #ebebeb;
+          color: #ccc;
         }
       }
     }
 
-    ul {
-      background-color: #fff;
-      box-shadow: 10px 0 18px rgba(0, 0, 0, 0.3);
-      border-radius: 0 5px 5px 0;
+    li li {
+      color: #ccc;
+      font-size: 14px;
+      margin: 0 0 4px;
+      padding: 4px 3% 4px 1px;
+      clear: left;
+
+      &:hover {
+        cursor: default;
+        color: #fff;
+
+        i.fa {
+          color: #fff;
+        }
+      }
+
+      &:last-child {
+        margin-bottom: 10px;
+      }
+
+      i.fa {
+        color: #888;
+        font-size: 14px;
+        border-radius: none;
+        float: left;
+        margin: 4px 0 0;
+        padding: 0;
+        width: 34px;
+      }
+    }
+
+    p {
+      color: #777;
+      font-size: 12px;
+      // font-weight: bold;
       margin: 0;
-      padding: 10px 10px 0 6px;
-      width: 300px;
+      padding: 4px 0 14px 10px;
+      clear: left;
+
+      &.next-head {
+        margin-top: 0;
+        padding-top: 25px;
+      }
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      width: 0;
+      opacity: 0;
+      overflow: hidden;
+      @include transition(opacity 0.3s ease-out 0s);
       position: absolute;
-      top: 3px;
+      top: 9px;
       left: 77px;
       z-index: 1;
 
-      li {
-        font-size: 14px;
-        margin: 0 0 4px;
-        padding: 2px 6px;
+      lh {
 
-        &:hover {
-          cursor: pointer;
-          background-color: #eee;
-        }
+        i.fa {
+          color: #888;
+          font-size: 14px;
+          // text-align: left;
+          border: none;
+          float: left;
+          margin: 0;
+          padding: 9px 0;
+          width: 34px;
 
-        &:last-child {
-          margin-bottom: 10px;
+          &:hover {
+            color: #fff;
+          }
         }
       }
+    }
+
+    li.urls {
+
+      li {
+        padding: 4px 3% 4px 37px;
+        position: relative;
+
+        &:hover:before {
+          color: #fff;
+        }
+      }
+
+      li:before {
+        color: #888;
+        content: "\f0ac";
+        font-family: FontAwesome;
+        position: absolute;
+        top: 4px;
+        left: 10px;
+      }
+    }
+
+    li.viewports {
     }
   }
 }
@@ -105,16 +181,21 @@ header {
 // ! URL field elements
 // -------------------------
 
-header #url-submission {
+header ul#url-submission {
 
   input[type="text"] {
+    color: #ccc;
     font-size: 0.85rem;
     line-height: 21px;
+    background-color: $black_3;
+    background-image: none;
+    border-color: $black_3;
     border-radius: 3px;
     box-shadow: none;
+    float: left;
     margin: 0 0 10px;
-    padding: 2px 5px 0;
-    width: 100%;
+    padding: 5px 3%;
+    width: 82%;
     height: auto;
   }
 }
@@ -177,8 +258,42 @@ header {
 main {
   margin-left: 77px;
   overflow: auto;
+  @include transition(margin 0.3s cubic-bezier(.82, .1, .14, 1.12));
 
   .main-container {
+  }
+}
+
+
+// expand sidebar
+// --------------
+
+body.open {
+
+  header {
+    width: 350px;
+
+    ul {
+
+      li ul {
+        opacity: 0;
+      }
+
+      li.selected > i.fa {
+        color: #ccc;
+        background-color: $black_4;
+      }
+
+      li.selected ul {
+        width: 273px;
+        opacity: 1;
+        @include transition(opacity 0.3s ease-out 0.3s);
+      }
+    }
+  }
+
+  main {
+    margin-left: 350px;
   }
 }
 

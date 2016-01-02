@@ -28,16 +28,20 @@ $(document).ready(function() {
   }, 100));
 
 
+
+
+
   // Set window height
+  // --------------------
   var mainHeight = function() {
     var sumDeviceWidth = 0;
     $('.device-window').each(function() {
       sumDeviceWidth += Number($(this).outerWidth(true));
     });
 
-  $('main').css({'height': viewport_height + 'px'});
-  $('main .main-container').css({'min-width': (sumDeviceWidth + 40) + 'px'});
-  $('header').css({'min-height': viewport_height + 'px'});
+    $('main').css({'height': viewport_height + 'px'});
+    $('main .main-container').css({'min-width': (sumDeviceWidth + 40) + 'px'});
+    $('header .header-wrap').css({'min-height': viewport_height + 'px'});
   };
   mainHeight();
 
@@ -48,46 +52,12 @@ $(document).ready(function() {
 
 
 
-  // --------------------------------------------------------------------
+  // --------------------
 
   var responderURLfield = 'input#responder-url';
 
   var loadWebsiteWindow = function() {
-
     var responderURL = $(responderURLfield).val();
-
-    var responderURL_1 = localStorage.getItem('urlItem_1');
-    var responderURL_2 = localStorage.getItem('urlItem_2');
-    var responderURL_3 = localStorage.getItem('urlItem_3');
-
-
-    if (responderURL !== null && responderURL_1 !== responderURL) {
-      if (responderURL.indexOf('http') === 0) {
-        localStorage.setItem('urlItem_1', responderURL);
-      }
-    }
-    if (responderURL_1 !== null && responderURL_1 !== responderURL) {
-      if (responderURL_1.indexOf('http') === 0) {
-        localStorage.setItem('urlItem_2', responderURL_1);
-      }
-    }
-    if (responderURL_2 !== null && responderURL_1 !== responderURL) {
-      if (responderURL_2.indexOf('http') === 0) {
-        localStorage.setItem('urlItem_3', responderURL_2);
-      }
-    }
-
-    $('header ul ul#url-submission li').remove();
-
-    if (responderURL_1 !== null) {
-      $('header ul ul#url-submission').append('<li>' + responderURL_1 + '</li>');
-    }
-    if (responderURL_2 !== null) {
-      $('header ul ul#url-submission').append('<li>' + responderURL_2 + '</li>');
-    }
-    if (responderURL_3 !== null) {
-      $('header ul ul#url-submission').append('<li>' + responderURL_3 + '</li>');
-    }
 
     // Check if URL field has content, and if so,
     // use it for each webview.
@@ -97,10 +67,54 @@ $(document).ready(function() {
         localStorage.setItem('urlItem', responderURL);
       }
     });
-
   };
 
-  // click from list
+
+  // Create a "bookmark" list.
+  // -------------------------
+
+  var bookMarkCounter = '';
+  if (localStorage.getItem('keepBookMarkCount') > 0) {
+    var getBookMarkVal = localStorage.getItem('keepBookMarkCount');
+    bookMarkCounter = parseInt(getBookMarkVal) + 1;
+  } else {
+    bookMarkCounter = 0;
+  }
+
+  var loadBookMarks = function() {
+    for (var counter = 0; counter <= bookMarkCounter; counter++) {
+      $('header ul ul#url-submission').append(localStorage.getItem('bookMarkUrl_' + counter));
+    }
+  };
+  loadBookMarks();
+
+  $('header ul ul#url-submission lh i.fa').click(function() {
+
+    // variables
+    var currentPathClass = $(responderURLfield).val().replace(/[^a-z0-9\s]/gi, '');
+    var getActiveURL = '<li class="' + currentPathClass + '">' + $(responderURLfield).val() + '</li>';
+    var addBookMarktoList = function() {
+      $('header ul ul#url-submission').append(getActiveURL);
+      localStorage.setItem('keepBookMarkCount', bookMarkCounter);
+      localStorage.setItem('bookMarkUrl_' + bookMarkCounter++, getActiveURL);
+    };
+
+    if ($('header ul ul#url-submission').find('li').length) {
+      //console.log('has li.' + currentPathClass);
+      if ($('header ul ul#url-submission').find('li.' + currentPathClass).length) {
+        // console.log('list already has that URL');
+      } else {
+        // console.log('no URL, but does now');
+        addBookMarktoList();
+      }
+    } else {
+      // console.log('no li');
+      addBookMarktoList();
+    }
+  });
+
+
+  // Add url from list
   $('header ul ul#url-submission').on('click', 'li', function() {
     var responderURLval = $(this).html();
     $('.frame').each(function() {
@@ -109,10 +123,10 @@ $(document).ready(function() {
   });
 
 
-
   // load
   if (localStorage.getItem('urlItem') !== null &&
-      localStorage.getItem('urlItem').indexOf('http') === 0) {
+      localStorage.getItem('urlItem').indexOf('http') === 0)
+  {
     $(responderURLfield).val(localStorage.getItem('urlItem'));
     loadWebsiteWindow();
   } else {
@@ -165,12 +179,51 @@ $(document).ready(function() {
   });
 
 
-  //
+
+
+  // Sidbar setting
   // ----------------------------------
 
-  $('header ul li.urls i.fa').click(function() {
-    $('header ul ul#url-submission').addClass('open');
+  // Set sidebar localstorage for open or closed
+  if (localStorage.getItem('sidebar_open') === null) {
+    localStorage.setItem('sidebar_open', 'false');
+  } else if (localStorage.getItem('sidebar_open') === 'true') {
+    $('body').addClass('open');
+  }
+
+
+  // Click sidebar el to open sidebar
+  $('header ul li').click(function() {
+    if ($(this).hasClass('selected')) {
+
+      if (localStorage.getItem('sidebar_open') === 'true') {
+        $('body').removeClass('open');
+        localStorage.setItem('sidebar_open', 'false');
+      } else {
+        $('body').addClass('open');
+        localStorage.setItem('sidebar_open', 'true');
+      }
+
+    } else {
+
+      if (localStorage.getItem('sidebar_open') === 'false') {
+        $('body').addClass('open');
+        localStorage.setItem('sidebar_open', 'true');
+      }
+    }
   });
+
+
+  // Remember which el was clicked
+  $('header ul li').click(function() {
+    $('header ul li').removeClass('selected');
+    $(this).addClass('selected');
+    var elClicked = $(this).index() + 1;
+    localStorage.setItem('sidebar_el_clicked', elClicked);
+  });
+  var getClickedNum = localStorage.getItem('sidebar_el_clicked');
+  $('header ul li:nth-child(' + getClickedNum + ')').addClass('selected');
+  $('header ul ul li').removeClass('selected');
 
 
 });

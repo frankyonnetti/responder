@@ -2614,7 +2614,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 
 td, th { padding: 0; }
 
-body { background-color: #ebebeb; margin: 0; overflow: hidden; }
+body { background-color: #f5f5f5; margin: 0; overflow: hidden; }
 
 a, a:visited { color: #2196f3; }
 
@@ -2622,25 +2622,43 @@ a:hover, a:visited:hover { color: #4caf50; text-decoration: underline; }
 
 a:focus, button:focus { outline: none; }
 
-header { background-color: #fff; box-shadow: 1px 0 0 rgba(0, 0, 0, 0.1); float: left; padding: 77px 0 0 0; width: 77px; -webkit-app-region: drag; position: absolute; top: 0; left: 0; z-index: 100; }
+header { background-color: #424242; box-shadow: 1px 0 0 rgba(0, 0, 0, 0.1); float: left; padding: 0; width: 77px; -webkit-transition: width 0.3s cubic-bezier(0.82, 0.1, 0.14, 1.12); -moz-transition: width 0.3s cubic-bezier(0.82, 0.1, 0.14, 1.12); transition: width 0.3s cubic-bezier(0.82, 0.1, 0.14, 1.12); -webkit-app-region: drag; position: absolute; top: 0; left: 0; z-index: 100; }
+
+header .header-wrap { background-color: #303030; padding: 77px 0 0 0; width: 77px; }
 
 header ul { list-style: none; margin: 0; padding: 0; }
 
-header ul li { position: relative; z-index: 1; }
+header ul li i.fa { color: #5a5a5a; font-size: 32px; text-align: center; border-radius: 2px 0 0 2px; display: block; margin: 0 0 20px 10px; padding: 10px 10px 10px 0; width: 67px; }
 
-header ul li i.fa { color: #5a5a5a; font-size: 32px; text-align: center; border: 1px solid #fff; border-right: none; border-radius: 2px 0 0 2px; display: block; margin: 0 0 20px 10px; padding: 10px 10px 10px 0; width: 67px; }
+header ul li i.fa:hover { color: #ccc; }
 
-header ul li i.fa:hover { border-color: #ebebeb; }
+header ul li li { color: #ccc; font-size: 14px; margin: 0 0 4px; padding: 4px 3% 4px 1px; clear: left; }
 
-header ul ul { background-color: #fff; box-shadow: 10px 0 18px rgba(0, 0, 0, 0.3); border-radius: 0 5px 5px 0; margin: 0; padding: 10px 10px 0 6px; width: 300px; position: absolute; top: 3px; left: 77px; z-index: 1; }
+header ul li li:hover { cursor: default; color: #fff; }
 
-header ul ul li { font-size: 14px; margin: 0 0 4px; padding: 2px 6px; }
+header ul li li:hover i.fa { color: #fff; }
 
-header ul ul li:hover { cursor: pointer; background-color: #eee; }
+header ul li li:last-child { margin-bottom: 10px; }
 
-header ul ul li:last-child { margin-bottom: 10px; }
+header ul li li i.fa { color: #888; font-size: 14px; border-radius: none; float: left; margin: 4px 0 0; padding: 0; width: 34px; }
 
-header #url-submission input[type="text"] { font-size: 0.85rem; line-height: 21px; border-radius: 3px; box-shadow: none; margin: 0 0 10px; padding: 2px 5px 0; width: 100%; height: auto; }
+header ul p { color: #777; font-size: 12px; margin: 0; padding: 4px 0 14px 10px; clear: left; }
+
+header ul p.next-head { margin-top: 0; padding-top: 25px; }
+
+header ul ul { margin: 0; padding: 0; width: 0; opacity: 0; overflow: hidden; -webkit-transition: opacity 0.3s ease-out 0s; -moz-transition: opacity 0.3s ease-out 0s; transition: opacity 0.3s ease-out 0s; position: absolute; top: 9px; left: 77px; z-index: 1; }
+
+header ul ul lh i.fa { color: #888; font-size: 14px; border: none; float: left; margin: 0; padding: 9px 0; width: 34px; }
+
+header ul ul lh i.fa:hover { color: #fff; }
+
+header ul li.urls li { padding: 4px 3% 4px 37px; position: relative; }
+
+header ul li.urls li:hover:before { color: #fff; }
+
+header ul li.urls li:before { color: #888; content: "\f0ac"; font-family: FontAwesome; position: absolute; top: 4px; left: 10px; }
+
+header ul#url-submission input[type="text"] { color: #ccc; font-size: 0.85rem; line-height: 21px; background-color: #303030; background-image: none; border-color: #303030; border-radius: 3px; box-shadow: none; float: left; margin: 0 0 10px; padding: 5px 3%; width: 82%; height: auto; }
 
 header input { background-color: #fff; background-image: -moz-linear-gradient(top, #fff, #f2f2f2); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#f2f2f2)); background-image: -webkit-linear-gradient(top, #fff, #f2f2f2); background-image: -o-linear-gradient(top, #fff, #f2f2f2); background-image: linear-gradient(to bottom, #fff, #f2f2f2); background-repeat: repeat-x; -webkit-app-region: no-drag; }
 
@@ -2654,7 +2672,17 @@ header button.button-clear { border-left: none; border-radius: 0 3px 3px 0; }
 
 header #add-webview { color: #737373; font-size: 1.0rem; line-height: 23px; text-align: center; border: 1px solid #ccc; border-radius: 3px; background-color: #fff; background-image: -moz-linear-gradient(top, #fff, #f2f2f2); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#f2f2f2)); background-image: -webkit-linear-gradient(top, #fff, #f2f2f2); background-image: -o-linear-gradient(top, #fff, #f2f2f2); background-image: linear-gradient(to bottom, #fff, #f2f2f2); background-repeat: repeat-x; float: right; margin-right: 15px; width: 40px; }
 
-main { margin-left: 77px; overflow: auto; }
+main { margin-left: 77px; overflow: auto; -webkit-transition: margin 0.3s cubic-bezier(0.82, 0.1, 0.14, 1.12); -moz-transition: margin 0.3s cubic-bezier(0.82, 0.1, 0.14, 1.12); transition: margin 0.3s cubic-bezier(0.82, 0.1, 0.14, 1.12); }
+
+body.open header { width: 350px; }
+
+body.open header ul li ul { opacity: 0; }
+
+body.open header ul li.selected > i.fa { color: #ccc; background-color: #424242; }
+
+body.open header ul li.selected ul { width: 273px; opacity: 1; -webkit-transition: opacity 0.3s ease-out 0.3s; -moz-transition: opacity 0.3s ease-out 0.3s; transition: opacity 0.3s ease-out 0.3s; }
+
+body.open main { margin-left: 350px; }
 
 #device-area { background: transparent url(../img/webview-info-bg.svg) repeat-x left top; padding-bottom: 40px; padding-left: 20px; }
 

@@ -69,19 +69,34 @@
 
   <body>
 
-    <header>
+    <header><div class="header-wrap">
       <ul>
         <li class="urls"><i class="fa fa-globe"></i>
           <ul id="url-submission">
-            <lh><input id="responder-url" type="text" placeholder="Enter URL"></lh>
+            <lh>
+              <p>Enter Web Address</p>
+              <i class="fa fa-plus-square-o"></i><input id="responder-url" type="text" placeholder="Enter URL">
+              <p class="next-head">Bookmarked Web Address</p>
+            </lh>
           </ul>
         </li>
-        <li><i class="fa fa-plus-circle"></i></li>
+        <li class="viewports"><i class="fa fa-plus-circle"></i>
+          <ul>
+            <lh><p>Select Viewport</p></lh>
+            <li><i class="fa fa-mobile"></i> iPhone 4</li>
+            <li><i class="fa fa-mobile"></i> iPhone 5</li>
+            <li><i class="fa fa-mobile"></i> iPhone 6</li>
+            <li><i class="fa fa-mobile"></i> iPhone 6 Plus</li>
+            <li><i class="fa fa-tablet"></i> iPad mini</li>
+            <li><i class="fa fa-tablet"></i> iPad</li>
+            <li><i class="fa fa-desktop"></i> Desktop</li>
+          </ul>
+        </li>
       </ul>
 
       <!-- <button class="button-load"><i class="fa fa-refresh"></i></button>  -->
       <!-- <button class="button-clear">C</button> -->
-    </header>
+    </div></header>
 
     <main><div class="main-container">
       <div id="device-area">
